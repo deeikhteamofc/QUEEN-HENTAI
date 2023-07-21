@@ -8,22 +8,16 @@ import os from 'os';
 const streamPipeline = promisify(pipeline);
 
 var handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `Use example ${usedPrefix}${command} Queen Hentai Bot`;
+  if (!text) throw `Use example ${usedPrefix}${command} sudu nona`;
   await m.react(rwait);
 
   let search = await yts(text);
   let vid = search.videos[Math.floor(Math.random() * search.videos.length)];
   if (!search) throw 'Video Not Found, Try Another Title';
   let { title, thumbnail, timestamp, views, ago, url } = vid;
-  let wm = '💝 Queen Hentai Downloading audio💝 please wait';
+  let wm = ' 💝 Queen Hentai WA Bot 💝';
 
-  let captvid = `✼ ••๑⋯ ❀ 💝 Queen Hentai 💝 ❀ ⋯⋅๑•• ✼
-  💝 Title: ${title}
-  💝 Duration: ${timestamp}
-  💝 Views: ${views}
-  💝 Upload: ${ago}
-  💝 Link: ${url}
-⊱─━━━━⊱༻●༺⊰━━━━─⊰`;
+  let captvid = `💝 Queen Hentai Downloading audio💝 please wait`;
 
   conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: captvid, footer: author }, { quoted: m });
 
@@ -75,7 +69,7 @@ var handler = async (m, { conn, command, text, usedPrefix }) => {
 
 handler.help = ['play'].map((v) => v + ' <query>');
 handler.tags = ['downloader'];
-handler.command = /^play$/i;
+handler.command = ['ytmp3', 'songs', 'ytmp3doc']
 
 handler.exp = 0;
 handler.diamond = false;
